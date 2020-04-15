@@ -29,7 +29,7 @@
   },
   "lint-staged": {
     "*.tsx": [
-      "yarn format"
+      "yarn lint"
     ]
   },
   "eslintConfig": {

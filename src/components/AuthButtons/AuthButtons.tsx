@@ -59,16 +59,16 @@ class AuthButtons extends React.Component<AuthButtonsProps, AuthButtonsState> {
     return (
       <div className="AuthButtons">
         {!this.state.auth ? (
-          <div>
-            <button className="button" onClick={this.handleSignIn}>
+          <div className="buttons">
+            <button className="button is-primary is-outlined" onClick={this.handleSignIn}>
               Sign In
             </button>
-            <button className="button" onClick={this.handleSignIn}>
+            <button className="button is-primary" onClick={this.handleSignIn}>
               Sign Up
             </button>
           </div>
         ) : (
-          <button className="button" onClick={this.handleLogout}>
+          <button className="button is-primary" onClick={this.handleLogout}>
             Logout
           </button>
         )}

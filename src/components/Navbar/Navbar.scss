@@ -1,0 +1,17 @@
+@import "../../sass/colors";
+
+.Navbar {
+  margin: 5px 0px;
+
+  #brand {
+    font-size: 5em;
+    color: $red !important;
+  }
+
+  .AuthButtonsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}

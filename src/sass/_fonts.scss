@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "fira";
+  src: local("fira"), url("../assets/fonts/FiraCode-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "poppins";
+  src: local("poppins"), url("../assets/fonts/Poppins-Medium.ttf") format("truetype");
+}
+
+$mono: "fira";
+$sans: "poppins"

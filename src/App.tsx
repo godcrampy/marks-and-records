@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import { UserState } from "./store/user/types";
 import { RootState } from "./store";
 import { connect } from "react-redux";
+import Navbar from "./components/Navbar/Navbar";
 
 interface StateProps {
   user: UserState;
@@ -19,10 +20,13 @@ export interface AppState {}
 class App extends React.Component<AppProps, AppState> {
   render() {
     return (
-      <Switch>
-        {this.props.user.auth && <Route path="/" component={HomePage} />}
-        <Route path="/" component={LandingPage} />
-      </Switch>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          {this.props.user.auth && <Route path="/" component={HomePage} />}
+          <Route path="/" component={LandingPage} />
+        </Switch>
+      </div>
     );
   }
 }

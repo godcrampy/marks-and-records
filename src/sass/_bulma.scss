@@ -1,1 +1,12 @@
+@import "colors";
+@import "fonts";
+
+$family-sans-serif: $mono;
+$primary: $purple;
+$scheme-main: $dark;
+$text: $light;
+$text-strong: $light;
+$body-color: $light;
+$control-border-width: 3px;
+
 @import "../../node_modules/bulma/bulma.sass";

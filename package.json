@@ -27,6 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "CI=true && yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.ts*' --fix && prettier --write '**/*.ts*'"
   },

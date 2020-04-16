@@ -4,7 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { rootReducer } from "../../store";
 import { setUser } from "../../store/user/actions";
-import LandingPage from "./LandingPage";
+import HomePage from "./HomePage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const store = createStore(rootReducer);
@@ -14,7 +14,7 @@ test("renders auth buttons without user", () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={LandingPage}></Route>
+          <Route path="/" component={HomePage}></Route>
         </Switch>
       </BrowserRouter>
     </Provider>
@@ -38,7 +38,7 @@ test("renders auth buttons with users", () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={LandingPage}></Route>
+          <Route path="/" component={HomePage}></Route>
         </Switch>
       </BrowserRouter>
     </Provider>
@@ -59,7 +59,7 @@ test("logs out user on logout", () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={LandingPage}></Route>
+          <Route path="/" component={HomePage}></Route>
         </Switch>
       </BrowserRouter>
     </Provider>

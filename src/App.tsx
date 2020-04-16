@@ -1,29 +1,34 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import HomePage from "./pages/HomePage/HomePage";
+import { UserState } from "./store/user/types";
+import { RootState } from "./store";
+import { connect } from "react-redux";
 
-export interface AppProps {}
+interface StateProps {
+  user: UserState;
+}
+
+export interface AppProps extends StateProps {}
 
 export interface AppState {}
 
 class App extends React.Component<AppProps, AppState> {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route path="/home">
-            <HomePage />
-          </Route>
-          <Route path="/">
-            <LandingPage />
-          </Route>
-        </Switch>
-      </Router>
+      <Switch>
+        {this.props.user.auth && <Route path="/" component={HomePage} />}
+        <Route path="/" component={LandingPage} />
+      </Switch>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state: RootState): StateProps => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(App);

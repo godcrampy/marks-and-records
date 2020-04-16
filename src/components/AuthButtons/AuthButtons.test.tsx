@@ -1,28 +1,26 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import App from "./App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { rootReducer } from "../../store";
+import AuthButtons from "./AuthButtons";
+import { setUser } from "../../store/user/actions";
 
-import { rootReducer } from "./store";
-import { setUser } from "./store/user/actions";
-
-// @ts-ignore:
 const store = createStore(rootReducer);
 
-test("renders auth buttons without users", () => {
+test("renders sign in if no user", () => {
   const { getByText } = render(
     <Provider store={store}>
-      <App />
+      <AuthButtons />
     </Provider>
   );
   const signInButton = getByText(/sign in/i);
-  const signUpButton = getByText(/sign up/i);
+  const signUpButton = getByText(/sign in/i);
   expect(signInButton).toBeInTheDocument();
   expect(signUpButton).toBeInTheDocument();
 });
 
-test("renders auth buttons users", () => {
+test("renders log out if user", () => {
   // * Test adding user
   const user: User = {
     name: "John Doe",
@@ -32,7 +30,7 @@ test("renders auth buttons users", () => {
   store.dispatch(setUser(user));
   const { getByText } = render(
     <Provider store={store}>
-      <App />
+      <AuthButtons />
     </Provider>
   );
   const logoutButton = getByText(/logout/i);
@@ -49,7 +47,7 @@ test("logs out user on logout", () => {
   store.dispatch(setUser(user));
   const { getByText } = render(
     <Provider store={store}>
-      <App />
+      <AuthButtons />
     </Provider>
   );
 

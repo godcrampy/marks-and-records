@@ -39,7 +39,10 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
             </div>
           </div>
 
-          <div className={`navbar-menu ${this.state.isActive ? "is-active" : ""}`}>
+          <div
+            className={`navbar-menu ${this.state.isActive ? "is-active" : ""}`}
+            aria-hidden={this.state.isActive}
+          >
             <div className="navbar-end">
               <div className="AuthButtonsWrapper">
                 <AuthButtons />

@@ -1,13 +1,12 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import App from "./App";
+import { render, fireEvent, getByLabelText } from "@testing-library/react";
+import Navbar from "./Navbar";
 import { createStore } from "redux";
+import { rootReducer } from "../../store";
 import { Provider } from "react-redux";
-import { createBrowserHistory } from "history";
-
-import { rootReducer } from "./store";
-import { setUser, removeUser } from "./store/user/actions";
 import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { setUser } from "../../store/user/actions";
 
 const store = createStore(rootReducer);
 
@@ -16,7 +15,7 @@ test("renders auth buttons without users", () => {
   const { getByText } = render(
     <Provider store={store}>
       <Router history={history}>
-        <App />
+        <Navbar />
       </Router>
     </Provider>
   );
@@ -38,7 +37,7 @@ test("renders auth buttons with users", () => {
   const { getByText } = render(
     <Provider store={store}>
       <Router history={history}>
-        <App />
+        <Navbar />
       </Router>
     </Provider>
   );
@@ -58,7 +57,7 @@ test("logs out user on logout", () => {
   const { getByText } = render(
     <Provider store={store}>
       <Router history={history}>
-        <App />
+        <Navbar />
       </Router>
     </Provider>
   );
@@ -75,64 +74,23 @@ test("logs out user on logout", () => {
   expect(signUpButton).toBeInTheDocument();
 });
 
-test("redirects to Landing Page if user is not present", () => {
+test("toggles hamburger", () => {
   const history = createBrowserHistory();
-  const { getByText } = render(
+  const { queryAllByRole, container } = render(
     <Provider store={store}>
       <Router history={history}>
-        <App />
+        <Navbar />
       </Router>
     </Provider>
   );
-  const landingPage = getByText(/landing/i);
-  expect(landingPage).toBeInTheDocument();
-});
+  const menu = getByLabelText(container, /menu/i);
+  expect(menu).toBeInTheDocument();
+  let buttons = queryAllByRole("button");
+  expect(buttons.length).toBe(3);
 
-test("redirects to HomePage on sign in", () => {
-  const history = createBrowserHistory();
-  const { getByText } = render(
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>
-  );
-  const landingPage = getByText(/landing/i);
-  expect(landingPage).toBeInTheDocument();
+  // hide auth buttons
+  fireEvent.click(menu);
 
-  // * sign in
-  const user: User = {
-    name: "John Doe",
-    email: "john@doe.com",
-    id: "john",
-  };
-  store.dispatch(setUser(user));
-  const homePage = getByText(/home/i);
-  expect(homePage).toBeInTheDocument();
-});
-
-test("redirects to LandingPage on log out", () => {
-  // * sign in
-  const user: User = {
-    name: "John Doe",
-    email: "john@doe.com",
-    id: "john",
-  };
-  store.dispatch(setUser(user));
-  const history = createBrowserHistory();
-  const { getByText } = render(
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>
-  );
-  const homePage = getByText(/home/i);
-  expect(homePage).toBeInTheDocument();
-
-  // * log out
-  store.dispatch(removeUser());
-  const landingPage = getByText(/landing/i);
-
-  expect(landingPage).toBeInTheDocument();
+  buttons = queryAllByRole("button");
+  expect(buttons.length).toBe(1);
 });

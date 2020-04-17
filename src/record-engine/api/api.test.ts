@@ -7,9 +7,9 @@ const api = new Api(user);
 const [record1, record2] = records;
 
 test("can write and fetch records", async () => {
-  await api.setRecord(record1);
+  await api.setRecord(record2);
   const records = await api.fetchRecords();
-  expect(records[0]).toEqual(record1);
+  expect(records[0]).toEqual(record2);
 });
 
 test("fetches record chronologically ", async () => {

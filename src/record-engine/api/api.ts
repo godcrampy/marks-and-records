@@ -11,7 +11,7 @@ class Api {
   async setRecord(record: DayRecord) {
     await this.db
       .collection("records")
-      .doc(this.user.id + record.date.toString())
+      .doc(this.user.id + record.time.toString())
       .set(record, { merge: true });
   }
 
@@ -22,11 +22,12 @@ class Api {
     const doc = await query.orderBy("date", "desc").get();
     return doc.docs.map((doc) => {
       let data = doc.data();
-      const date = data.date;
-      const owner = data.owner;
+      const date: string = data.date;
+      const owner: string = data.owner;
       const marks: Mark[] = data.marks;
       const score: Score = data.score;
-      let record: DayRecord = { date, owner, marks, score };
+      const time: number = data.time;
+      let record: DayRecord = { time, date, owner, marks, score };
       return record;
     });
   }
@@ -39,11 +40,12 @@ class Api {
     const doc = await query.orderBy("date", "desc").startAt(startAfter).limit(limit).get();
     return doc.docs.map((doc) => {
       let data = doc.data();
-      const date = data.date;
-      const owner = data.owner;
+      const date: string = data.date;
+      const owner: string = data.owner;
       const marks: Mark[] = data.marks;
       const score: Score = data.score;
-      let record: DayRecord = { date, owner, marks, score };
+      const time: number = data.time;
+      let record: DayRecord = { date, owner, marks, score, time };
       return record;
     });
   }
@@ -56,11 +58,12 @@ class Api {
     const doc = await query.orderBy("date", "desc").limit(limit).get();
     return doc.docs.map((doc) => {
       let data = doc.data();
-      const date = data.date;
-      const owner = data.owner;
+      const date: string = data.date;
+      const owner: string = data.owner;
       const marks: Mark[] = data.marks;
       const score: Score = data.score;
-      let record: DayRecord = { date, owner, marks, score };
+      const time: number = data.time;
+      let record: DayRecord = { date, owner, marks, score, time };
       return record;
     });
   }

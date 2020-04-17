@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { setUser } from "../../store/user/actions";
+import user from "../../samples/user.sample";
 
 const store = createStore(rootReducer);
 
@@ -27,11 +28,6 @@ test("renders auth buttons without users", () => {
 
 test("renders auth buttons with users", () => {
   // * Test adding user
-  const user: User = {
-    name: "John Doe",
-    email: "john@doe.com",
-    id: "john",
-  };
   store.dispatch(setUser(user));
   const history = createBrowserHistory();
   const { getByText } = render(
@@ -47,11 +43,6 @@ test("renders auth buttons with users", () => {
 
 test("logs out user on logout", () => {
   // * Test adding user and then removing
-  const user: User = {
-    name: "John Doe",
-    email: "john@doe.com",
-    id: "john",
-  };
   store.dispatch(setUser(user));
   const history = createBrowserHistory();
   const { getByText } = render(

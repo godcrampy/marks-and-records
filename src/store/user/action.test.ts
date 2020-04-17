@@ -1,12 +1,8 @@
 import { setUser, removeUser } from "./actions";
 import { UserActionType, UserActions } from "./types";
+import user from "../../samples/user.sample";
 
 test("returns SetUserAction", () => {
-  const user: User = {
-    email: "a@a.com",
-    name: "John Doe",
-    id: "xyz",
-  };
   const userAction: UserActionType = setUser(user);
   const expectedUserAction: UserActionType = {
     type: UserActions.SET_USER,

@@ -1,14 +1,9 @@
 import { setUser, removeUser } from "./actions";
 import { userReducer } from "./reducer";
 import { UserState } from "./types";
+import user from "../../samples/user.sample";
 
 test("sets user", () => {
-  const user: User = {
-    email: "a@a.com",
-    name: "John Doe",
-    id: "xyz",
-  };
-
   const userAction = setUser(user);
   const state = userReducer(undefined, userAction);
   const expectedState: UserState = {

@@ -2,6 +2,7 @@ import { rootReducer } from ".";
 import { createStore } from "redux";
 import { UserState } from "./user/types";
 import { setUser, removeUser } from "./user/actions";
+import user from "../samples/user.sample";
 
 test("sets initial state values", () => {
   const store = createStore(rootReducer);
@@ -14,13 +15,7 @@ test("sets initial state values", () => {
 
 test("exports user reducers", () => {
   const store = createStore(rootReducer);
-
   // * Test adding user
-  const user: User = {
-    name: "John Doe",
-    email: "john@doe.com",
-    id: "john",
-  };
   let expectedUserState: UserState = {
     auth: true,
     user,

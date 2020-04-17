@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 
 import user from "./user.sample";
+import marks from "./marks.sample";
 
 const record1: DayRecord = {
   date: +new Date(),
@@ -9,9 +10,7 @@ const record1: DayRecord = {
     mood: 4,
     work: 4,
   },
-  marks: [
-    { message: "abc", owner: user.id, metric: { mood: 4, work: 4 }, tags: [], time: +new Date() },
-  ],
+  marks: [marks[0]],
 };
 
 const record2: DayRecord = {
@@ -21,15 +20,7 @@ const record2: DayRecord = {
     mood: 3,
     work: 3,
   },
-  marks: [
-    {
-      message: "cde",
-      owner: user.id,
-      metric: { mood: 3, work: 3 },
-      tags: [],
-      time: +new Date() + 10,
-    },
-  ],
+  marks: [marks[1]],
 };
 
 const records = [record1, record2];

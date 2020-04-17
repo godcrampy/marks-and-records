@@ -4,7 +4,6 @@ type DayRecord = {
   owner: string;
   time: number; // unix epoch of first mark
   marks: Mark[];
-  score: Score;
 };
 
 type Score = {

@@ -25,9 +25,8 @@ class Api {
       const date: string = data.date;
       const owner: string = data.owner;
       const marks: Mark[] = data.marks;
-      const score: Score = data.score;
       const time: number = data.time;
-      let record: DayRecord = { time, date, owner, marks, score };
+      let record: DayRecord = { time, date, owner, marks };
       return record;
     });
   }
@@ -43,9 +42,8 @@ class Api {
       const date: string = data.date;
       const owner: string = data.owner;
       const marks: Mark[] = data.marks;
-      const score: Score = data.score;
       const time: number = data.time;
-      let record: DayRecord = { date, owner, marks, score, time };
+      let record: DayRecord = { date, owner, marks, time };
       return record;
     });
   }
@@ -61,9 +59,8 @@ class Api {
       const date: string = data.date;
       const owner: string = data.owner;
       const marks: Mark[] = data.marks;
-      const score: Score = data.score;
       const time: number = data.time;
-      let record: DayRecord = { date, owner, marks, score, time };
+      let record: DayRecord = { date, owner, marks, time };
       return record;
     });
   }

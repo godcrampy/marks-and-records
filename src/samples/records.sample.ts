@@ -10,10 +10,6 @@ const record1: DayRecord = {
   date: new Date(day1).toDateString(),
   time: day1,
   owner: user.id,
-  score: {
-    mood: 4,
-    work: 4,
-  },
   marks: [marks[0]],
 };
 
@@ -21,10 +17,6 @@ const record2: DayRecord = {
   date: new Date(day2).toDateString(), // The record of above test is still up
   time: day2,
   owner: user.id,
-  score: {
-    mood: 3,
-    work: 3,
-  },
   marks: [marks[1]],
 };
 

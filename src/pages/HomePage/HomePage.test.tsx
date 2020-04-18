@@ -6,7 +6,13 @@ import { rootReducer } from "../../store";
 import HomePage from "./HomePage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import "../../config.expose";
+import { setUser } from "../../store/user/actions";
+import user from "../../samples/user.sample";
+
 const store = createStore(rootReducer);
+
+store.dispatch(setUser(user));
 
 test("renders home page", () => {
   const { getByTestId } = render(

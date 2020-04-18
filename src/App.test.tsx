@@ -9,6 +9,7 @@ import { rootReducer } from "./store";
 import { setUser, removeUser } from "./store/user/actions";
 import { Router } from "react-router-dom";
 import user from "./samples/user.sample";
+import "./config.expose";
 
 const store = createStore(rootReducer);
 

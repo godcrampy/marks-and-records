@@ -2,7 +2,9 @@ import React from "react";
 
 import "./NewMark.scss";
 
-export interface NewMarkProps {}
+export interface NewMarkProps {
+  adder: (message: string, metric: Metric) => void;
+}
 
 export interface NewMarkState {
   productivity: number;
@@ -24,6 +26,13 @@ class NewMark extends React.Component<NewMarkProps, NewMarkState> {
   };
   handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({ message: e.target.value });
+  };
+  handleMark = () => {
+    this.props.adder(this.state.message, {
+      mood: this.state.mood,
+      work: this.state.productivity,
+    });
+    this.setState({ message: "" });
   };
   render() {
     return (
@@ -108,7 +117,9 @@ class NewMark extends React.Component<NewMarkProps, NewMarkState> {
           </div>
         </div>
         <div className="right">
-          <button className="button is-primary">Mark</button>
+          <button onClick={this.handleMark} className="button is-primary">
+            Mark
+          </button>
         </div>
       </div>
     );

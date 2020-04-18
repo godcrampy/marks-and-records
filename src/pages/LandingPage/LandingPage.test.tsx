@@ -9,7 +9,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 const store = createStore(rootReducer);
 
 test("renders landing page", () => {
-  const { getByText } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
@@ -19,6 +19,6 @@ test("renders landing page", () => {
     </Provider>
   );
 
-  const landingText = getByText(/landing/i);
+  const landingText = getByTestId("LandingPage");
   expect(landingText).toBeInTheDocument();
 });

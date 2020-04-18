@@ -68,27 +68,27 @@ test("logs out user on logout", () => {
 
 test("redirects to Landing Page if user is not present", () => {
   const history = createBrowserHistory();
-  const { getByText } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <App />
       </Router>
     </Provider>
   );
-  const landingPage = getByText(/landing/i);
+  const landingPage = getByTestId("LandingPage");
   expect(landingPage).toBeInTheDocument();
 });
 
 test("redirects to HomePage on sign in", () => {
   const history = createBrowserHistory();
-  const { getByText } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <App />
       </Router>
     </Provider>
   );
-  const landingPage = getByText(/landing/i);
+  const landingPage = getByTestId("LandingPage");
   expect(landingPage).toBeInTheDocument();
 
   // * sign in
@@ -98,7 +98,7 @@ test("redirects to HomePage on sign in", () => {
     id: "john",
   };
   store.dispatch(setUser(user));
-  const homePage = getByText(/home/i);
+  const homePage = getByTestId("HomePage");
   expect(homePage).toBeInTheDocument();
 });
 
@@ -106,19 +106,19 @@ test("redirects to LandingPage on log out", () => {
   // * sign in
   store.dispatch(setUser(user));
   const history = createBrowserHistory();
-  const { getByText } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <Router history={history}>
         <App />
       </Router>
     </Provider>
   );
-  const homePage = getByText(/home/i);
+  const homePage = getByTestId("HomePage");
   expect(homePage).toBeInTheDocument();
 
   // * log out
   store.dispatch(removeUser());
-  const landingPage = getByText(/landing/i);
+  const landingPage = getByTestId("LandingPage");
 
   expect(landingPage).toBeInTheDocument();
 });

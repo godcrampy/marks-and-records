@@ -7,7 +7,11 @@ export interface LandingPageState {}
 
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   render() {
-    return <div className="LandingPage">Landing Page</div>;
+    return (
+      <div className="LandingPage" data-testid="LandingPage">
+        Landing Page
+      </div>
+    );
   }
 }
 

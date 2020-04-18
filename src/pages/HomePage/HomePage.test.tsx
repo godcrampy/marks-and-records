@@ -9,7 +9,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 const store = createStore(rootReducer);
 
 test("renders home page", () => {
-  const { getByText } = render(
+  const { getByTestId } = render(
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
@@ -19,6 +19,6 @@ test("renders home page", () => {
     </Provider>
   );
 
-  const homeText = getByText(/home/i);
+  const homeText = getByTestId("HomePage");
   expect(homeText).toBeInTheDocument();
 });

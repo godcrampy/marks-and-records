@@ -5,6 +5,7 @@ import { RootState } from "../../store";
 import { connect } from "react-redux";
 import Feed from "../../components/Feed/Feed";
 import records from "../../samples/records.sample";
+import NewMark from "../../components/NewMark/NewMark";
 
 interface StateProps {
   user: UserState;
@@ -19,7 +20,9 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
     return (
       <div className="HomePage" data-testid="HomePage">
         <div className="columns">
-          <div className="column"></div>
+          <div className="column">
+            <NewMark />
+          </div>
           <div className="column">
             <Feed records={records} />
           </div>

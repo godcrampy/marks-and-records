@@ -22,3 +22,33 @@ test("renders home page", () => {
   const homeText = getByTestId("HomePage");
   expect(homeText).toBeInTheDocument();
 });
+
+test("renders Feed", () => {
+  const { getByTestId } = render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={HomePage}></Route>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  );
+
+  const feed = getByTestId("Feed");
+  expect(feed).toBeInTheDocument();
+});
+
+test("renders NewMark component", () => {
+  const { getByTestId } = render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={HomePage}></Route>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  );
+
+  const component = getByTestId("NewMark");
+  expect(component).toBeInTheDocument();
+});

@@ -1,10 +1,10 @@
 /* istanbul ignore file */
 
 export enum RecordsActions {
-  ADD_RECORDS,
-  REMOVE_RECORDS,
-  ADD_MARK,
-  REMOVE_MARK,
+  ADD_RECORDS = "ADD_RECORDS",
+  REMOVE_RECORDS = "REMOVE_RECORDS",
+  ADD_MARK = "ADD_MARK",
+  REMOVE_MARK = "REMOVE_MARK",
 }
 
 export interface RecordsState {

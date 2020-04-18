@@ -1,8 +1,8 @@
 /* istanbul ignore file */
 
 export enum UserActions {
-  SET_USER,
-  REMOVE_USER,
+  SET_USER = "SET_USER",
+  REMOVE_USER = "REMOVE_USER",
 }
 
 export interface UserState {

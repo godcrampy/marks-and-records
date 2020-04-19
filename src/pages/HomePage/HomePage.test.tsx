@@ -58,3 +58,18 @@ test("renders NewMark component", () => {
   const component = getByTestId("NewMark");
   expect(component).toBeInTheDocument();
 });
+
+test("renders Stats component", () => {
+  const { getByTestId } = render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={HomePage}></Route>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+  );
+
+  const component = getByTestId("Stats");
+  expect(component).toBeInTheDocument();
+});

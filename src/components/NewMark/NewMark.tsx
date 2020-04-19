@@ -37,6 +37,7 @@ class NewMark extends React.Component<NewMarkProps, NewMarkState> {
   render() {
     return (
       <div className="NewMark" data-testid="NewMark">
+        <p className="title is-4 purple">New Mark</p>
         <textarea
           className="textarea"
           value={this.state.message}

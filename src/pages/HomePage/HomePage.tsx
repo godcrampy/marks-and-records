@@ -8,6 +8,7 @@ import NewMark from "../../components/NewMark/NewMark";
 import { RecordsState } from "../../store/records/types";
 import RecordEngine from "../../record-engine/record-engine";
 import store from "../../store/store-spawn";
+import Stats from "../../components/Stats/Stats";
 
 interface StateProps {
   user: UserState;
@@ -42,6 +43,11 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
       <div className="HomePage" data-testid="HomePage">
         <div className="columns">
           <div className="column">
+            <Stats
+              weekly={this.state.engine.getWeeklyStats()}
+              today={this.state.engine.getDailyStats()}
+              weeklyTotal={this.state.engine.getWeeklyWork()}
+            />
             <NewMark adder={this.addMark} />
           </div>
           <div className="column">

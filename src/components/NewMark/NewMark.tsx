@@ -91,11 +91,7 @@ class NewMark extends React.Component<NewMarkProps, NewMarkState> {
             <div className="field is-narrow">
               <div className="control is-expanded">
                 <div className="select is-fullwidth">
-                  <select
-                    id="mood"
-                    value={this.state.productivity}
-                    onChange={this.handleMoodChange}
-                  >
+                  <select id="mood" value={this.state.mood} onChange={this.handleMoodChange}>
                     <option value={1} key={1}>
                       1
                     </option>

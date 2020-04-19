@@ -32,7 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "CI=true && yarn test --coverage --watchAll=false",
+    "test:coverage": "yarn test --coverage --watchAll=false",
+    "test:no-config": "CI=true yarn test --testPathIgnorePatterns \"src/App.test.tsx\" \"src/pages/HomePage/HomePage.test.tsx\"",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.ts*' --fix && prettier --write '**/*.ts*'"
   },

@@ -55,11 +55,21 @@ test("adds records sequentially", () => {
   let extraRecords = _.cloneDeep(records);
   extraRecords[1].time = records[0].time + 20;
   extraRecords[0].time = records[0].time + 10;
+  extraRecords[1].date = "20 April 2020";
+  extraRecords[0].date = "19 April 2020";
 
   store.dispatch(addRecords(extraRecords));
 
   _.reverse(extraRecords);
   expect(store.getState().records.records).toStrictEqual([...extraRecords, ...records]);
+});
+
+test("doesn't add duplicate records", () => {
+  const store = createStore(rootReducer);
+  store.dispatch(addRecords(records));
+  store.dispatch(addRecords(records));
+  store.dispatch(addRecords(records));
+  expect(store.getState().records.records).toStrictEqual(records);
 });
 
 test("removes records", () => {

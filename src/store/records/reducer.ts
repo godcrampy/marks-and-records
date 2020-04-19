@@ -9,7 +9,8 @@ export function recordsReducer(state = initialState, action: RecordsActionType):
   switch (action.type) {
     case RecordsActions.ADD_RECORDS: {
       let oldRecords = _.cloneDeep(state.records);
-      const newRecords: DayRecord[] = [...oldRecords, ..._.cloneDeep(action.payload)];
+      let newRecords: DayRecord[] = [...oldRecords, ..._.cloneDeep(action.payload)];
+      newRecords = _.uniqBy(newRecords, (r: DayRecord) => r.date);
       const sortedRecords: DayRecord[] = _.orderBy(newRecords, ["time"], ["desc"]);
       return {
         records: sortedRecords,

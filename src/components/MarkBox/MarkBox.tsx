@@ -1,6 +1,8 @@
 import React from "react";
 import Highlight from "react-highlighter";
 
+import "./MarkBox.scss";
+
 export interface MarkProps {
   mark: Mark;
 }
@@ -16,8 +18,10 @@ class MarkBox extends React.Component<MarkProps, MarkState> {
   epochToTime = (epoch: number): string => {
     const time = new Date(epoch);
     const hour = time.getHours();
-    const minutes = time.getMinutes();
-    return `${hour}:${minutes}`;
+    const minute = time.getMinutes();
+    const hourString: string = hour < 10 ? `0${hour}` : hour.toString();
+    const minuteString: string = minute < 10 ? `0${minute}` : minute.toString();
+    return `${hourString}:${minuteString}`;
   };
   render() {
     return (
@@ -31,7 +35,7 @@ class MarkBox extends React.Component<MarkProps, MarkState> {
             {this.props.mark.message}
           </Highlight>
         </p>
-        <p>
+        <p className="metrics">
           <b>
             Productivity: {this.renderMetric(this.props.mark.metric.work)}, Mood:{" "}
             {this.renderMetric(this.props.mark.metric.mood)}

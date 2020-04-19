@@ -17,6 +17,7 @@ class Record extends React.Component<RecordProps, RecordState> {
         {this.props.record.marks.map((m: Mark, i: number) => (
           <MarkBox mark={m} key={i} />
         ))}
+        <hr />
       </div>
     );
   }

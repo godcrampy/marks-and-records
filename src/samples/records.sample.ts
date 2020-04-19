@@ -10,14 +10,14 @@ const record1: DayRecord = {
   date: new Date(day1).toDateString(),
   time: day1,
   owner: user.id,
-  marks: [marks[0]],
+  marks: marks.slice(0, 2),
 };
 
 const record2: DayRecord = {
   date: new Date(day2).toDateString(), // The record of above test is still up
   time: day2,
   owner: user.id,
-  marks: [marks[1]],
+  marks: marks.slice(2),
 };
 
 const records = [record1, record2];

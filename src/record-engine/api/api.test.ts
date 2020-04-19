@@ -8,6 +8,7 @@ const [record1, record2] = records;
 
 test("can write and fetch records", async () => {
   await api.setRecord(record2);
+  await api.setRecord(record1);
   const records = await api.fetchRecords();
   expect(records[0]).toEqual(record2);
 });

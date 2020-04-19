@@ -107,12 +107,12 @@ test("adds mark to same date", () => {
     metric: { mood: 2, work: 5 },
     owner: user.id,
     tags: [],
-    time: records[1].marks[0].time + 10,
+    time: records[1].marks[0].time + 1000 * 60 * 10,
   };
 
   store.dispatch(addMark(mark1));
   expect(store.getState().records.records.length).toBe(2);
-  expect(store.getState().records.records[1].marks.length).toBe(2);
+  expect(store.getState().records.records[1].marks.length).toBe(3);
   expect(store.getState().records.records[1].marks[0]).toStrictEqual(mark1);
 
   let mark2: Mark = {
@@ -120,18 +120,19 @@ test("adds mark to same date", () => {
     metric: { mood: 2, work: 5 },
     owner: user.id,
     tags: [],
-    time: records[1].marks[0].time - 10,
+    time: records[1].marks[0].time - 1000 * 60 * 10,
   };
 
   store.dispatch(addMark(mark2));
   expect(store.getState().records.records.length).toBe(2);
-  expect(store.getState().records.records[1].marks.length).toBe(3);
-  expect(store.getState().records.records[1].marks[2]).toStrictEqual(mark2);
+  expect(store.getState().records.records[1].marks.length).toBe(4);
+  expect(store.getState().records.records[1].marks[3]).toStrictEqual(mark2);
 });
 
 test("removes mark", () => {
   const store = createStore(rootReducer);
   store.dispatch(addRecords(records));
   store.dispatch(removeMark(marks[1]));
-  expect(store.getState().records.records[0].marks.length).toBe(0);
+  expect(store.getState().records.records[1].marks.length).toBe(1);
+  expect(store.getState().records.records[0].marks.length).toBe(2);
 });

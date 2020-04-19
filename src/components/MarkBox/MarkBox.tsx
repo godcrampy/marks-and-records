@@ -1,6 +1,8 @@
 import React from "react";
 import Highlight from "react-highlighter";
 
+import "./MarkBox.scss";
+
 export interface MarkProps {
   mark: Mark;
 }
@@ -31,7 +33,7 @@ class MarkBox extends React.Component<MarkProps, MarkState> {
             {this.props.mark.message}
           </Highlight>
         </p>
-        <p>
+        <p className="metrics">
           <b>
             Productivity: {this.renderMetric(this.props.mark.metric.work)}, Mood:{" "}
             {this.renderMetric(this.props.mark.metric.mood)}

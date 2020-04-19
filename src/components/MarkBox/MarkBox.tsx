@@ -18,8 +18,10 @@ class MarkBox extends React.Component<MarkProps, MarkState> {
   epochToTime = (epoch: number): string => {
     const time = new Date(epoch);
     const hour = time.getHours();
-    const minutes = time.getMinutes();
-    return `${hour}:${minutes}`;
+    const minute = time.getMinutes();
+    const hourString: string = hour < 10 ? `0${hour}` : hour.toString();
+    const minuteString: string = minute < 10 ? `0${minute}` : minute.toString();
+    return `${hourString}:${minuteString}`;
   };
   render() {
     return (

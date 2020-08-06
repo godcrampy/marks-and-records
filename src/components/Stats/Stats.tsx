@@ -22,7 +22,7 @@ class Stats extends React.Component<StatsProps, StatsState> {
         <p>
           <b>Mood: {this.props.today.mood}</b>
         </p>
-        <p className="yellow">Weekly</p>
+        <p className="yellow">Overall</p>
         <p>
           <b>Productivity: {this.props.weeklyTotal}</b>
         </p>

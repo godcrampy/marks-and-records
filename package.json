@@ -17,7 +17,7 @@
     "bulma": "^0.8.2",
     "firebase": "^7.14.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-highlighter": "^0.4.3",
